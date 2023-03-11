@@ -16,3 +16,29 @@ body::-webkit-scrollbar {
 .boards-section::-webkit-scrollbar-thumb {
   background-color: #4a5568;
 }
+
+@layer components {
+  .or-sign-in {
+    position: relative;
+    &:before {
+      content: '';
+      display: block;
+      width: 100px;
+      height: 1px;
+      @apply bg-primary;
+      left: 0;
+      top: 50%;
+      position: absolute;
+    }
+    &:after {
+      content: '';
+      display: block;
+      width: 100px;
+      height: 1px;
+      @apply bg-primary;
+      right: 0;
+      top: 50%;
+      position: absolute;
+    }
+  }
+}
