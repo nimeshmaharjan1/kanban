@@ -2,9 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-// .scrollbar-hide::-webkit-scrollbar {
-//   display: none;
-// }
+body::-webkit-scrollbar {
+  display: none;
+}
 
 .boards-section::-webkit-scrollbar {
   width: 5px;

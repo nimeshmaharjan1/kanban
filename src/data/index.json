@@ -1,0 +1,71 @@
+{
+  "boardColumns": [
+    {
+      "id": "column-1",
+      "title": "To Do",
+      "taskIds": ["task-1", "task-2", "task-3"]
+    },
+    {
+      "id": "column-2",
+      "title": "In Progress",
+      "taskIds": ["task-4", "task-5"]
+    },
+    {
+      "id": "column-3",
+      "title": "Done",
+      "taskIds": ["task-6", "task-7"]
+    }
+  ],
+  "tasks": [
+    {
+      "id": "task-1",
+      "taskTitle": "Write documentation",
+      "boardColumn": "column-1"
+    },
+    {
+      "id": "task-2",
+      "taskTitle": "Refactor code",
+      "boardColumn": "column-1"
+    },
+    {
+      "id": "task-3",
+      "taskTitle": "Test new feature",
+      "boardColumn": "column-1"
+    },
+    {
+      "id": "task-4",
+      "taskTitle": "Design UI",
+      "boardColumn": "column-2"
+    },
+    {
+      "id": "task-5",
+      "taskTitle": "Implement backend logic",
+      "boardColumn": "column-2"
+    },
+    {
+      "id": "task-6",
+      "taskTitle": "Deploy to production",
+      "boardColumn": "column-3"
+    },
+    {
+      "id": "task-7",
+      "taskTitle": "Write unit tests",
+      "boardColumn": "column-3"
+    },
+    {
+      "id": "task-8",
+      "taskTitle": "Add search functionality",
+      "boardColumn": "column-1"
+    },
+    {
+      "id": "task-9",
+      "taskTitle": "Optimize database queries",
+      "boardColumn": "column-2"
+    },
+    {
+      "id": "task-10",
+      "taskTitle": "Fix bug in payment processing",
+      "boardColumn": "column-2"
+    }
+  ]
+}

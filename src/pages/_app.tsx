@@ -1,7 +1,7 @@
 import '@/styles/globals.scss';
 import type { AppProps } from 'next/app';
 import { ThemeProvider } from 'next-themes';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { NextPage } from 'next';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -28,14 +28,14 @@ export default function App({ Component, pageProps: { session, ...pageProps } }:
     <ThemeProvider>
       <Provider store={store}>
         <QueryClientProvider client={new QueryClient()}>
-          {/* <AuthProvider session={session}> */}
-          {getLayout(
-            <>
-              <NextNProgress options={{ showSpinner: false }} showOnShallow height={4} />
-              <Component {...pageProps} />
-            </>
-          )}
-          {/* </AuthProvider> */}
+          <AuthProvider session={session}>
+            {getLayout(
+              <>
+                <NextNProgress options={{ showSpinner: false }} showOnShallow height={4} />
+                <Component {...pageProps} />
+              </>
+            )}
+          </AuthProvider>
 
           <ToastContainer />
         </QueryClientProvider>
