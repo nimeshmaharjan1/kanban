@@ -34,6 +34,14 @@ model Session {
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
 model User {
   id            String    @id @default(cuid())
   name          String?
@@ -42,12 +50,46 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  tasks         Task[]
 }
 
-model VerificationToken {
-  identifier String
-  token      String   @unique
-  expires    DateTime
+/// Define the Task model
+model Task {
+  id           Int       @id @default(autoincrement())
+  title        String
+  description  String?
+  column       Column    @relation(fields: [columnId], references: [id])
+  columnId     Int
+  assignedTo   User?     @relation(fields: [assignedToId], references: [id])
+  assignedToId String?
+  board        Board?    @relation(fields: [boardId], references: [id])
+  boardId      Int?
+  subtasks     Subtask[]
+}
 
-  @@unique([identifier, token])
+// Define the Board model
+model Board {
+  id      Int      @id @default(autoincrement())
+  title   String
+  columns Column[]
+  tasks   Task[]
+}
+
+// Define the Column model
+model Column {
+  id      Int    @id @default(autoincrement())
+  title   String
+  status  String
+  tasks   Task[]
+  Board   Board? @relation(fields: [boardId], references: [id])
+  boardId Int?
+}
+
+// Define the Subtask model
+model Subtask {
+  id        Int     @id @default(autoincrement())
+  title     String
+  completed Boolean @default(false)
+  task      Task    @relation(fields: [taskId], references: [id])
+  taskId    Int
 }

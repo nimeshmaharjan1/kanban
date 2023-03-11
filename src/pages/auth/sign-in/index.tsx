@@ -115,11 +115,11 @@ const SignIn: NextPageWithLayout = () => {
         </button>
         <p className={`text-center my-3 or-sign-in text-sm md:text-md`}>Or sign in with</p>
         <div className="card-actions justify-center !gap-3">
-          <button onClick={() => signIn('google', { redirect: false })} className="btn !normal-case gap-2 hover:text-primary">
+          <button onClick={() => signIn('google', { redirect: false })} type="button" className="btn !normal-case gap-2 hover:text-primary">
             <AiOutlineGoogle className="text-lg" />
             Google
           </button>
-          <button className="btn !normal-case gap-2 hover:text-primary" onClick={() => signIn('github', { redirect: false })}>
+          <button type="button" className="btn !normal-case gap-2 hover:text-primary" onClick={() => signIn('github', { redirect: false })}>
             <FaGithub className="text-lg" />
             Github
           </button>

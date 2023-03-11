@@ -98,20 +98,6 @@ export const authOptions: AuthOptions = {
     signIn: '/auth/sign-in',
     signOut: '/',
   },
-  callbacks: {
-    async signIn({ user, account }) {
-      if (account?.provider === 'google') {
-        // Redirect to a linking page if the account is not linked
-        const isLinked = await prisma.user.findFirst({ where: { id: user.id } });
-        console.log('is linked: ', isLinked); // Replace with your own logic
-        if (!isLinked) {
-          throw new Error('OAuthAccountNotLinked');
-        }
-      }
-
-      return true;
-    },
-  },
 };
 
 export default NextAuth(authOptions);

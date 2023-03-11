@@ -3,11 +3,22 @@ import { NextPageWithLayout } from './_app';
 import MainSharedLayout from '@/shared/layouts/main-layout';
 import jsonData from '@/data/index.json';
 import { DragDropContext, Draggable, Droppable, OnDragEndResponder } from 'react-beautiful-dnd';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
+import { Toast, showToast } from '@/shared/utils/toast.util';
 
 const Home: NextPageWithLayout = () => {
+  const { status } = useSession();
+  const router = useRouter();
   const [isMounted, setIsMounted] = useState(false);
   const [data, setData] = useState(jsonData);
+
   const handleDragEnd: OnDragEndResponder = (result) => {
+    if (status === 'unauthenticated') {
+      showToast(Toast.info, 'You must be logged in.');
+      router.push('/api/auth/signin');
+      return;
+    }
     const { source, destination, draggableId } = result;
     // If dropped outside a droppable area, do nothing
     if (!destination) {
